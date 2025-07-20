@@ -1,0 +1,9 @@
+colorama==0.4.6
+dnspython==2.7.0
+Faker==33.1.0
+psycopg2-binary==2.9.10
+pymongo==4.10.1
+python-dateutil==2.9.0.post0
+six==1.17.0
+sqlparse==0.5.2
+typing_extensions==4.12.2
