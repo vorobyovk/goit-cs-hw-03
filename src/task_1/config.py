@@ -4,7 +4,7 @@ from pathlib import Path
 # Налаштування бази даних
 DB_CONFIG = {
     "dbname": "task_management",
-    "user": "postgres",
+    "user": "goit",
     "password": "goit",
     "host": "localhost",
     "port": 5432,

@@ -1,0 +1,117 @@
+2025-07-20 14:48:19,988 - INFO - Початок виконання скрипту: 2025-07-20T14:48:19.988795
+2025-07-20 14:48:29,479 - INFO - 
+Виконання запиту:
+SELECT * FROM tasks WHERE user_id = 1;
+2025-07-20 14:48:29,493 - INFO - ==================================================
+Оновлено файл: g:\My Drive\Education\GoIT\PC-system-fundamental\goit-cs-hw-03\src\task_1\requests_results_error_2025-07-20_14-48-19.json
+Кількість записів: 1
+==================================================
+2025-07-20 14:48:51,262 - INFO - 
+Виконання запиту:
+SELECT * FROM tasks 
+WHERE status_id = (SELECT id FROM status WHERE name = 'new');
+2025-07-20 14:48:51,275 - INFO - ==================================================
+Оновлено файл: g:\My Drive\Education\GoIT\PC-system-fundamental\goit-cs-hw-03\src\task_1\requests_results_error_2025-07-20_14-48-19.json
+Кількість записів: 2
+==================================================
+2025-07-20 14:48:54,855 - INFO - 
+Виконання запиту:
+UPDATE tasks SET status_id = (SELECT id FROM status WHERE name='in progress') WHERE id=10;
+2025-07-20 14:48:54,871 - INFO - ==================================================
+Оновлено файл: g:\My Drive\Education\GoIT\PC-system-fundamental\goit-cs-hw-03\src\task_1\requests_results_error_2025-07-20_14-48-19.json
+Кількість записів: 3
+==================================================
+2025-07-20 14:54:43,808 - INFO - 
+Виконання запиту:
+SELECT * FROM users 
+WHERE id NOT IN (SELECT user_id FROM tasks);
+2025-07-20 14:54:43,820 - INFO - ==================================================
+Оновлено файл: g:\My Drive\Education\GoIT\PC-system-fundamental\goit-cs-hw-03\src\task_1\requests_results_success_2025-07-20_14-48-19.json
+Кількість записів: 1
+==================================================
+2025-07-20 14:54:47,200 - INFO - 
+Виконання запиту:
+INSERT INTO tasks (title, description, status_id, user_id)
+VALUES ('Задонать 2 гривні Стерненку', 'Наша русофобія недостатня!', (SELECT id FROM status WHERE name='new'), 2);
+2025-07-20 14:54:47,216 - INFO - ==================================================
+Оновлено файл: g:\My Drive\Education\GoIT\PC-system-fundamental\goit-cs-hw-03\src\task_1\requests_results_error_2025-07-20_14-48-19.json
+Кількість записів: 4
+==================================================
+2025-07-20 14:54:58,461 - INFO - 
+Виконання запиту:
+SELECT * FROM tasks 
+WHERE status_id <> (SELECT id FROM status WHERE name='completed');
+2025-07-20 14:54:58,479 - INFO - ==================================================
+Оновлено файл: g:\My Drive\Education\GoIT\PC-system-fundamental\goit-cs-hw-03\src\task_1\requests_results_success_2025-07-20_14-48-19.json
+Кількість записів: 2
+==================================================
+2025-07-20 14:55:02,101 - INFO - 
+Виконання запиту:
+DELETE FROM tasks WHERE id=5;
+2025-07-20 14:55:02,115 - INFO - ==================================================
+Оновлено файл: g:\My Drive\Education\GoIT\PC-system-fundamental\goit-cs-hw-03\src\task_1\requests_results_success_2025-07-20_14-48-19.json
+Кількість записів: 3
+==================================================
+2025-07-20 14:55:03,811 - INFO - 
+Виконання запиту:
+SELECT * FROM users WHERE email LIKE '%gmail%';
+2025-07-20 14:55:03,825 - INFO - ==================================================
+Оновлено файл: g:\My Drive\Education\GoIT\PC-system-fundamental\goit-cs-hw-03\src\task_1\requests_results_success_2025-07-20_14-48-19.json
+Кількість записів: 4
+==================================================
+2025-07-20 14:55:04,710 - INFO - 
+Виконання запиту:
+UPDATE users SET fullname='Степан Андрійович' WHERE id=3;
+2025-07-20 14:55:04,731 - INFO - ==================================================
+Оновлено файл: g:\My Drive\Education\GoIT\PC-system-fundamental\goit-cs-hw-03\src\task_1\requests_results_success_2025-07-20_14-48-19.json
+Кількість записів: 5
+==================================================
+2025-07-20 14:55:05,434 - INFO - 
+Виконання запиту:
+SELECT s.name, COUNT(t.id) AS task_count
+FROM status s
+LEFT JOIN tasks t ON s.id = t.status_id
+GROUP BY s.name;
+2025-07-20 14:55:05,449 - INFO - ==================================================
+Оновлено файл: g:\My Drive\Education\GoIT\PC-system-fundamental\goit-cs-hw-03\src\task_1\requests_results_success_2025-07-20_14-48-19.json
+Кількість записів: 6
+==================================================
+2025-07-20 14:55:06,301 - INFO - 
+Виконання запиту:
+SELECT t.*
+FROM tasks t
+JOIN users u ON t.user_id = u.id
+WHERE u.email LIKE '%@example.com';
+2025-07-20 14:55:06,317 - INFO - ==================================================
+Оновлено файл: g:\My Drive\Education\GoIT\PC-system-fundamental\goit-cs-hw-03\src\task_1\requests_results_success_2025-07-20_14-48-19.json
+Кількість записів: 7
+==================================================
+2025-07-20 14:55:07,194 - INFO - 
+Виконання запиту:
+SELECT * FROM tasks WHERE description IS NULL OR description = '';
+2025-07-20 14:55:07,207 - INFO - ==================================================
+Оновлено файл: g:\My Drive\Education\GoIT\PC-system-fundamental\goit-cs-hw-03\src\task_1\requests_results_success_2025-07-20_14-48-19.json
+Кількість записів: 8
+==================================================
+2025-07-20 14:55:08,086 - INFO - 
+Виконання запиту:
+SELECT u.fullname, u.email, t.title, t.description
+FROM users u
+INNER JOIN tasks t ON u.id = t.user_id
+WHERE t.status_id = (SELECT id FROM status WHERE name='in progress');
+2025-07-20 14:55:08,100 - INFO - ==================================================
+Оновлено файл: g:\My Drive\Education\GoIT\PC-system-fundamental\goit-cs-hw-03\src\task_1\requests_results_success_2025-07-20_14-48-19.json
+Кількість записів: 9
+==================================================
+2025-07-20 14:55:08,950 - INFO - 
+Виконання запиту:
+SELECT u.id, u.fullname, COUNT(t.id) AS task_count
+FROM users u
+LEFT JOIN tasks t ON u.id = t.user_id
+GROUP BY u.id, u.fullname;
+2025-07-20 14:55:08,964 - INFO - ==================================================
+Оновлено файл: g:\My Drive\Education\GoIT\PC-system-fundamental\goit-cs-hw-03\src\task_1\requests_results_success_2025-07-20_14-48-19.json
+Кількість записів: 10
+==================================================
+2025-07-20 14:55:08,966 - INFO - Скрипт завершено успішно
+2025-07-20 14:55:08,967 - INFO - Загальний час виконання: 408.978 сек.

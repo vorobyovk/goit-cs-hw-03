@@ -1,0 +1,14 @@
+2025-07-20 14:48:12,562 - INFO - Підключення до бази даних встановлено успішно.
+2025-07-20 14:48:12,567 - ERROR - Помилка при заповненні таблиці 'status': relation "status" does not exist
+LINE 2:                     INSERT INTO status (name) VALUES ('new')
+                                        ^
+
+2025-07-20 14:48:12,568 - ERROR - Помилка при заповненні таблиці 'users': relation "users" does not exist
+LINE 2:                 INSERT INTO users (fullname, email) VALUES (...
+                                    ^
+
+2025-07-20 14:48:12,569 - ERROR - Помилка при додаванні завдань: relation "users" does not exist
+LINE 3:                 FROM users u CROSS JOIN status s
+                             ^
+
+2025-07-20 14:48:12,569 - INFO - З'єднання з базою даних закрито.

@@ -1,0 +1,11 @@
+[
+  {
+    "description": "--(5) Додати нове завдання для конкретного користувача (наприклад user_id=2, статус 'new'):",
+    "query": "INSERT INTO tasks (title, description, status_id, user_id)\nVALUES ('Задонать 2 гривні Стерненку', 'Наша русофобія недостатня!', (SELECT id FROM status WHERE name='new'), 2);",
+    "status": "error",
+    "error": "null value in column \"status_id\" of relation \"tasks\" violates not-null constraint\nDETAIL:  Failing row contains (2, Задонать 2 гривні Стерненку, Наша русофобія недостатня!, null, 2, 2025-07-20 14:55:43.02712).\n",
+    "timestamp": "2025-07-20T14:55:43.028509",
+    "affected_rows": 0,
+    "result": null
+  }
+]

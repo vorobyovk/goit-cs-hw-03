@@ -1,0 +1,112 @@
+[
+  {
+    "description": "--(4) Отримати список користувачів, які не мають жодного завдання:",
+    "query": "SELECT * FROM users \nWHERE id NOT IN (SELECT user_id FROM tasks);",
+    "status": "success",
+    "error": null,
+    "timestamp": "2025-07-20T14:54:43.812067",
+    "affected_rows": 0,
+    "message": "Отримано 0 записів",
+    "execution_time": 0.002081,
+    "result": []
+  },
+  {
+    "description": "--(6) Отримати всі завдання, які ще не завершено (статус != 'completed'):",
+    "query": "SELECT * FROM tasks \nWHERE status_id <> (SELECT id FROM status WHERE name='completed');",
+    "status": "success",
+    "error": null,
+    "timestamp": "2025-07-20T14:54:58.464042",
+    "affected_rows": 0,
+    "message": "Отримано 0 записів",
+    "execution_time": 0.000694,
+    "result": []
+  },
+  {
+    "description": "--(7) Видалити конкретне завдання (наприклад id=5):",
+    "query": "DELETE FROM tasks WHERE id=5;",
+    "status": "success",
+    "error": null,
+    "timestamp": "2025-07-20T14:55:02.103358",
+    "affected_rows": 0,
+    "message": "Видалено 0 записів",
+    "execution_time": 0.000556,
+    "result": null
+  },
+  {
+    "description": "--(8) Знайти користувачів з певною електронною поштою (наприклад, містить 'gmail'):",
+    "query": "SELECT * FROM users WHERE email LIKE '%gmail%';",
+    "status": "success",
+    "error": null,
+    "timestamp": "2025-07-20T14:55:03.813257",
+    "affected_rows": 0,
+    "message": "Отримано 0 записів",
+    "execution_time": 0.000806,
+    "result": []
+  },
+  {
+    "description": "--(9) Оновити ім'я користувача (наприклад, для user_id=3):",
+    "query": "UPDATE users SET fullname='Степан Андрійович' WHERE id=3;",
+    "status": "success",
+    "error": null,
+    "timestamp": "2025-07-20T14:55:04.712572",
+    "affected_rows": 0,
+    "message": "Оновлено 0 записів",
+    "execution_time": 0.00074,
+    "result": null
+  },
+  {
+    "description": "--(10) Отримати кількість завдань для кожного статусу:",
+    "query": "SELECT s.name, COUNT(t.id) AS task_count\nFROM status s\nLEFT JOIN tasks t ON s.id = t.status_id\nGROUP BY s.name;",
+    "status": "success",
+    "error": null,
+    "timestamp": "2025-07-20T14:55:05.437521",
+    "affected_rows": 0,
+    "message": "Отримано 0 записів",
+    "execution_time": 0.000711,
+    "result": []
+  },
+  {
+    "description": "--(11) Отримати завдання для користувачів з певним доменом email (наприклад '@example.com'):",
+    "query": "SELECT t.*\nFROM tasks t\nJOIN users u ON t.user_id = u.id\nWHERE u.email LIKE '%@example.com';",
+    "status": "success",
+    "error": null,
+    "timestamp": "2025-07-20T14:55:06.303724",
+    "affected_rows": 0,
+    "message": "Отримано 0 записів",
+    "execution_time": 0.000577,
+    "result": []
+  },
+  {
+    "description": "--(12) Отримати список завдань, що не мають опису:",
+    "query": "SELECT * FROM tasks WHERE description IS NULL OR description = '';",
+    "status": "success",
+    "error": null,
+    "timestamp": "2025-07-20T14:55:07.195854",
+    "affected_rows": 0,
+    "message": "Отримано 0 записів",
+    "execution_time": 0.000531,
+    "result": []
+  },
+  {
+    "description": "--(13) Користувачі та їхні завдання у статусі 'in progress':",
+    "query": "SELECT u.fullname, u.email, t.title, t.description\nFROM users u\nINNER JOIN tasks t ON u.id = t.user_id\nWHERE t.status_id = (SELECT id FROM status WHERE name='in progress');",
+    "status": "success",
+    "error": null,
+    "timestamp": "2025-07-20T14:55:08.089278",
+    "affected_rows": 0,
+    "message": "Отримано 0 записів",
+    "execution_time": 0.000837,
+    "result": []
+  },
+  {
+    "description": "--(14) Отримати користувачів та кількість їхніх завдань:",
+    "query": "SELECT u.id, u.fullname, COUNT(t.id) AS task_count\nFROM users u\nLEFT JOIN tasks t ON u.id = t.user_id\nGROUP BY u.id, u.fullname;",
+    "status": "success",
+    "error": null,
+    "timestamp": "2025-07-20T14:55:08.953030",
+    "affected_rows": 0,
+    "message": "Отримано 0 записів",
+    "execution_time": 0.000747,
+    "result": []
+  }
+]
